@@ -168,7 +168,7 @@ com.cowork
 <h2>▶️ How to Run</h2>
 <ol>
     <li>Install Oracle Database</li>
-    <li>Create a database user (do not use SCOTT/TIGER)</li>
+    <li>Create a database user</li>
     <li>Create tables using provided SQL</li>
     <li>Update DB credentials in <code>DBUtil.java</code></li>
     <li>Run <code>CoworkMain.java</code></li>
