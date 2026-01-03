@@ -2,29 +2,83 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    
+    <title>Co-working Space Desk Booking & Billing System (JDBC)</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            background-color: #f8fafc;
+            color: #1f2937;
+            margin: 40px;
+        }
+        h1, h2, h3 {
+            color: #0f172a;
+        }
+        h1 {
+            border-bottom: 3px solid #6366f1;
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 30px;
+            border-left: 5px solid #6366f1;
+            padding-left: 10px;
+        }
+        code, pre {
+            background: #0f172a;
+            color: #e5e7eb;
+            padding: 12px;
+            border-radius: 6px;
+            display: block;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        table th, table td {
+            border: 1px solid #cbd5f5;
+            padding: 10px;
+            text-align: left;
+        }
+        table th {
+            background-color: #e0e7ff;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        .badge {
+            display: inline-block;
+            background: #6366f1;
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            margin-right: 5px;
+        }
+    </style>
 </head>
 <body>
 
 <h1>🏢 Co-working Space Desk Booking & Billing System (JDBC)</h1>
 
 <p>
-    A <strong>console-based Java application</strong> developed using <strong>JDBC and Oracle Database</strong>
-    to manage members, desk bookings, and usage-based billing in a co-working space environment.
+    A <strong>console-based Java application</strong> built using <strong>JDBC and Oracle Database</strong>
+    to manage members, desk bookings, and usage-based billing in a co-working space.
 </p>
 
 <p class="badge">Java</p>
 <p class="badge">JDBC</p>
 <p class="badge">Oracle DB</p>
-<p class="badge">Console Application</p>
+<p class="badge">Console App</p>
 
 <hr>
 
 <h2>📌 Project Overview</h2>
 <p>
-    This project simulates a real-world co-working space management system where members can book desks,
-    cancel bookings, and receive usage-based bills. The application enforces strong validation rules
-    and ensures data consistency using JDBC transactions.
+    This system allows co-working space administrators to handle member profiles,
+    manage desk bookings transactionally, and generate accurate usage-based bills
+    using membership-tier pricing.
 </p>
 
 ---
@@ -33,66 +87,37 @@
 
 <h3>👤 Member Management</h3>
 <ul>
-    <li>Add new members with validated details</li>
-    <li>View individual member details</li>
-    <li>View all registered members</li>
-    <li>Remove members only if no active bookings or pending bills exist</li>
+    <li>Add, view, list, and remove members</li>
+    <li>Strong validation on member details</li>
 </ul>
 
 <h3>🪑 Desk Booking</h3>
 <ul>
-    <li>Create desk bookings transactionally</li>
-    <li>Prevent overlapping bookings</li>
-    <li>Cancel existing bookings</li>
-    <li>Status tracking: BOOKED, CANCELLED, COMPLETED</li>
+    <li>Create desk bookings with overlap prevention</li>
+    <li>Cancel bookings transactionally</li>
+    <li>Status tracking: BOOKED / CANCELLED / COMPLETED</li>
 </ul>
 
 <h3>💰 Billing System</h3>
 <ul>
     <li>Generate usage-based bills</li>
-    <li>Membership tier pricing logic</li>
-    <li>Maintain outstanding balances</li>
-    <li>Bill status tracking (PENDING / PAID / CANCELLED)</li>
-</ul>
-
-<h3>🔐 Transaction & Validation</h3>
-<ul>
-    <li>JDBC transaction handling using commit & rollback</li>
-    <li>Custom exception handling for business rules</li>
+    <li>Membership tier pricing</li>
+    <li>Outstanding balance tracking</li>
 </ul>
 
 ---
 
 <h2>🧱 Technology Stack</h2>
 <table>
-    <tr>
-        <th>Layer</th>
-        <th>Technology</th>
-    </tr>
-    <tr>
-        <td>Programming Language</td>
-        <td>Java</td>
-    </tr>
-    <tr>
-        <td>Database</td>
-        <td>Oracle Database</td>
-    </tr>
-    <tr>
-        <td>Connectivity</td>
-        <td>JDBC</td>
-    </tr>
-    <tr>
-        <td>Architecture</td>
-        <td>Layered (Controller → Service → DAO)</td>
-    </tr>
-    <tr>
-        <td>Interface</td>
-        <td>Console-based</td>
-    </tr>
+    <tr><th>Layer</th><th>Technology</th></tr>
+    <tr><td>Language</td><td>Java</td></tr>
+    <tr><td>Database</td><td>Oracle DB</td></tr>
+    <tr><td>Connectivity</td><td>JDBC</td></tr>
+    <tr><td>Architecture</td><td>Layered (Controller → Service → DAO)</td></tr>
+    <tr><td>Interface</td><td>Console-based</td></tr>
 </table>
 
 ---
-
 <h2>🗂️ Project Structure</h2>
 <pre>
 com.cowork
@@ -122,54 +147,53 @@ com.cowork
 
 ---
 
-<h2>🗃️ Database Tables</h2>
+<h2>🗃️ Database Design</h2>
 
-<h3>MEMBER_TBL</h3>
+<h3>📘 MEMBER_TBL</h3>
 <table>
-    <tr>
-        <th>Column</th>
-        <th>Type</th>
-        <th>Description</th>
-    </tr>
-    <tr>
-        <td>MEMBER_ID</td>
-        <td>VARCHAR2(12)</td>
-        <td>Primary Key</td>
-    </tr>
-    <tr>
-        <td>FULL_NAME</td>
-        <td>VARCHAR2(150)</td>
-        <td>Member Name</td>
-    </tr>
-    <tr>
-        <td>EMAIL</td>
-        <td>VARCHAR2(200)</td>
-        <td>Email Address</td>
-    </tr>
-    <tr>
-        <td>MOBILE</td>
-        <td>VARCHAR2(20)</td>
-        <td>Contact Number</td>
-    </tr>
-    <tr>
-        <td>MEMBERSHIP_TIER</td>
-        <td>VARCHAR2(30)</td>
-        <td>BASIC / STANDARD / PREMIUM</td>
-    </tr>
-    <tr>
-        <td>OUTSTANDING_BALANCE</td>
-        <td>NUMBER(12,2)</td>
-        <td>Pending Amount</td>
-    </tr>
+    <tr><th>Column</th><th>Datatype</th><th>Description</th></tr>
+    <tr><td>MEMBER_ID</td><td>VARCHAR2(12)</td><td>Primary Key</td></tr>
+    <tr><td>FULL_NAME</td><td>VARCHAR2(150)</td><td>Member full name</td></tr>
+    <tr><td>EMAIL</td><td>VARCHAR2(200)</td><td>Email address</td></tr>
+    <tr><td>MOBILE</td><td>VARCHAR2(20)</td><td>Contact number</td></tr>
+    <tr><td>MEMBERSHIP_TIER</td><td>VARCHAR2(30)</td><td>BASIC / STANDARD / PREMIUM</td></tr>
+    <tr><td>OUTSTANDING_BALANCE</td><td>NUMBER(12,2)</td><td>Pending amount</td></tr>
+</table>
+
+---
+
+<h3>📗 BOOKING_TBL</h3>
+<table>
+    <tr><th>Column</th><th>Datatype</th><th>Description</th></tr>
+    <tr><td>BOOKING_ID</td><td>NUMBER(10)</td><td>Primary Key</td></tr>
+    <tr><td>MEMBER_ID</td><td>VARCHAR2(12)</td><td>Foreign Key → MEMBER_TBL</td></tr>
+    <tr><td>DESK_CODE</td><td>VARCHAR2(20)</td><td>Desk/Pod identifier</td></tr>
+    <tr><td>BOOKING_DATE</td><td>DATE</td><td>Date of booking</td></tr>
+    <tr><td>START_TIME</td><td>VARCHAR2(10)</td><td>Start time (HH:MM)</td></tr>
+    <tr><td>END_TIME</td><td>VARCHAR2(10)</td><td>End time (HH:MM)</td></tr>
+    <tr><td>STATUS</td><td>VARCHAR2(20)</td><td>BOOKED / CANCELLED / COMPLETED</td></tr>
+</table>
+
+---
+
+<h3>📕 BILL_TBL</h3>
+<table>
+    <tr><th>Column</th><th>Datatype</th><th>Description</th></tr>
+    <tr><td>BILL_ID</td><td>NUMBER(10)</td><td>Primary Key</td></tr>
+    <tr><td>MEMBER_ID</td><td>VARCHAR2(12)</td><td>Foreign Key → MEMBER_TBL</td></tr>
+    <tr><td>BILLING_PERIOD_FROM</td><td>DATE</td><td>Billing start date</td></tr>
+    <tr><td>BILLING_PERIOD_TO</td><td>DATE</td><td>Billing end date</td></tr>
+    <tr><td>TOTAL_HOURS</td><td>NUMBER(10,2)</td><td>Total booked hours</td></tr>
+    <tr><td>AMOUNT</td><td>NUMBER(12,2)</td><td>Total bill amount</td></tr>
+    <tr><td>STATUS</td><td>VARCHAR2(20)</td><td>PENDING / PAID / CANCELLED</td></tr>
 </table>
 
 ---
 
 <h2>▶️ How to Run</h2>
 <ol>
-    <li>Install Oracle Database</li>
-    <li>Create a database user</li>
-    <li>Create tables using provided SQL</li>
+    <li>Create Oracle DB user</li>
+    <li>Create tables using SQL</li>
     <li>Update DB credentials in <code>DBUtil.java</code></li>
     <li>Run <code>CoworkMain.java</code></li>
 </ol>
@@ -188,19 +212,16 @@ BILL GENERATED
 
 <h2>🚀 Future Enhancements</h2>
 <ul>
-    <li>Web-based UI (Spring Boot)</li>
-    <li>User authentication & roles</li>
-    <li>Online payment integration</li>
-    <li>Reporting dashboard</li>
+    <li>Spring Boot Web Application</li>
+    <li>Role-based authentication</li>
+    <li>Online payments</li>
+    <li>Admin dashboard</li>
 </ul>
 
 ---
 
 <h2>👨‍💻 Author</h2>
-<p>
-    <strong>Anbumani S</strong><br>
-    Java & Full-Stack Developer
-</p>
+<p><strong>Anbumani S</strong><br>Java & Full-Stack Developer</p>
 
 <hr>
 
