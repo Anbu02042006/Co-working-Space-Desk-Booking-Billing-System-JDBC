@@ -2,61 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Co-working Space Desk Booking & Billing System (JDBC)</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            line-height: 1.6;
-            background-color: #f8fafc;
-            color: #1f2937;
-            margin: 40px;
-        }
-        h1, h2, h3 {
-            color: #0f172a;
-        }
-        h1 {
-            border-bottom: 3px solid #6366f1;
-            padding-bottom: 10px;
-        }
-        h2 {
-            margin-top: 30px;
-            border-left: 5px solid #6366f1;
-            padding-left: 10px;
-        }
-        code, pre {
-            background: #0f172a;
-            color: #e5e7eb;
-            padding: 12px;
-            border-radius: 6px;
-            display: block;
-            overflow-x: auto;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-        }
-        table th, table td {
-            border: 1px solid #cbd5f5;
-            padding: 10px;
-            text-align: left;
-        }
-        table th {
-            background-color: #e0e7ff;
-        }
-        ul, ol {
-            margin-left: 20px;
-        }
-        .badge {
-            display: inline-block;
-            background: #6366f1;
-            color: #fff;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            margin-right: 5px;
-        }
-    </style>
+   
 </head>
 <body>
 
